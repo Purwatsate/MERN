@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Navigate } from 'react-router-dom';
+import { AppLogo } from '../components/AppLogo';
 import { useAuth } from '../context/AuthContext';
 import { ApiError } from '../api/client';
 import { APP_TITLE, AUTH } from '../constants/my';
@@ -32,7 +33,7 @@ export function LoginPage() {
     <div className="login-page">
       <div className="login-card">
         <div className="login-header">
-          <span className="badge-icon large">ရဲ</span>
+          <AppLogo size={56} className="app-logo--login" />
           <h1>{APP_TITLE}</h1>
           <p>{AUTH.loginTitle}</p>
         </div>

@@ -1,5 +1,9 @@
 # Police Database System (MERN)
 
+<p align="center">
+  <img src="assets/logo.svg" alt="ရဲတပ်ဖွဲ့ အချက်အလက်စနစ်" width="80" height="80" />
+</p>
+
 Monorepo layout:
 
 ```

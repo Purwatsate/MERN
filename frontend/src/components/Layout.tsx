@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { AppLogo } from './AppLogo';
 import { useAuth } from '../context/AuthContext';
 import { APP_TITLE, AUTH, NAV, USER_ROLE_LABELS } from '../constants/my';
 
@@ -12,8 +13,8 @@ export function Layout() {
     <div className="app-shell">
       <header className="header">
         <div className="header-brand">
-          <span className="badge-icon">ရဲ</span>
-          <h1>{APP_TITLE}</h1>
+          <AppLogo size={36} />
+          <h1 className="header-title">{APP_TITLE}</h1>
         </div>
         <div className="header-user">
           <span>
