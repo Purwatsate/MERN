@@ -8,6 +8,40 @@ Node.js + **TypeScript** + Express + PostgreSQL API for the Myanmar police datab
 - `pg` — raw queries & `SELECT sp_*()` calls
 - PostgreSQL stored procedures in `database/stored_procedures.sql`
 - JWT authentication for police officers (`users` table)
+- **Winston** + **express-winston** — HTTP and error logging
+
+## Logging
+
+Every API request is logged to the console and to files under `logs/`:
+
+| File | Content |
+|------|---------|
+| `logs/combined.log` | All requests (JSON) |
+| `logs/error.log` | Errors only (JSON) |
+
+Optional in `.env`:
+
+```
+LOG_LEVEL=debug   # error | warn | info | http | debug
+NODE_ENV=development
+```
+
+Example console output (one line per request, no headers or tokens):
+
+```
+2026-05-22 14:00:01 [info]: Police Database API listening on http://localhost:3000
+2026-05-22 14:00:05 [info]: GET /api/people 200 12ms
+2026-05-22 14:00:06 [info]: POST /api/auth/login 200 45ms
+```
+
+Use `logger` from `src/config/logger.ts` in your own code:
+
+```typescript
+import { logger } from '../config/logger';
+logger.debug('detail', { id: personId });
+logger.warn('something odd');
+logger.error('failed', { err });
+```
 
 ## Database connection
 

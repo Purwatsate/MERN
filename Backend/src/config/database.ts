@@ -1,5 +1,6 @@
 import { Pool, QueryResult, QueryResultRow } from 'pg';
 import dotenv from 'dotenv';
+import { logger } from './logger';
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ const pool = new Pool({
 });
 
 pool.on('error', (err: Error) => {
-  console.error('Unexpected PostgreSQL pool error', err);
+  logger.error('Unexpected PostgreSQL pool error', { message: err.message, stack: err.stack });
 });
 
 async function query<T extends QueryResultRow = QueryResultRow>(

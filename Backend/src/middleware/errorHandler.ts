@@ -1,13 +1,18 @@
 import { Request, Response, NextFunction } from 'express';
+import { logger } from '../config/logger';
 import { isAppError } from '../types/errors';
 
 export function errorHandler(
   err: unknown,
-  _req: Request,
+  req: Request,
   res: Response,
   _next: NextFunction
 ): void {
-  console.error(err);
+  logger.error('Request failed', {
+    method: req.method,
+    url: req.originalUrl,
+    error: err instanceof Error ? { message: err.message, stack: err.stack } : err,
+  });
 
   if (isAppError(err)) {
     if (err.code === '23505') {
