@@ -1,0 +1,2 @@
+-- Admin user is created by: npm run db:init
+-- Default credentials: admin / Admin@123
